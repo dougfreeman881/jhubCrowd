@@ -1,0 +1,8 @@
+{
+  "appId": "com.doug.testapp",
+  "appName": "testApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
