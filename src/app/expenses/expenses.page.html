@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Expense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="ion-padding">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" > 
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating" for="description">Enter Expense Description</ion-label>
+                <ion-input 
+                name="description" 
+                ngModel
+                required
+                text
+                minlength="1"
+                type='text'>
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating" for="amount">Enter amount in pounds</ion-label >
+                <ion-input 
+                name="amount" 
+                required
+                number
+                ngModel
+                type='number'>
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row  *ngIf="photo" >
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-img
+                  style="width: 300px; height: 300px;" 
+                  role="button"
+                  class="image"
+                  (click)="takePicture()"
+                  [src]="photo"
+                 >
+                </ion-img>
+            </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>     
+        <ion-row  *ngIf="!photo">
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-button        
+                color="primary"
+                (click)="takePicture()"
+                type="button"
+                >
+                <ion-icon name="camera" slot="start"></ion-icon>
+                <ion-label>Take Picture of Receipt</ion-label>
+                </ion-button> 
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>        
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item *ngIf="f.valid && photo">
+                <ion-button        
+                color="primary"
+                type="submit">
+                <ion-icon  slot="start"></ion-icon>
+                <ion-label>Submit Form</ion-label>
+                </ion-button> 
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </form>
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">                
+      <ion-tab-button [routerLink]="['/', 'home']">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button> 
+      <ion-tab-button [routerLink]="['/', 'showall']">
+        <ion-icon name="logo-buffer"></ion-icon>
+        <ion-label>Show Expenses</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>  
+    </ion-tabs>
+</ion-toolbar>

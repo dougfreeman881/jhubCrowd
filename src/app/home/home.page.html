@@ -1,14 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    <h3 align-self-center>Expenses Manager</h3>
+    <ion-item>
+      <h4>Select an option below to either view your expenses or enter a new one.</h4>
+    </ion-item>
+    <ion-item>
+      You currently have {{ arrayLength }} items stored.<br><br>
+      Total expenditure: &pound;{{ totalExpense }}
+    </ion-item>
+    <ion-tabs>
+      <ion-tab-bar>
+        <ion-tab-button [routerLink]="['/', 'expenses']">
+          <ion-icon name="add"></ion-icon>
+          <ion-label>Add Expense</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['/', 'showall']">
+          <ion-icon name="logo-buffer"></ion-icon>
+          <ion-label>Show Expenses</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
   </div>
 </ion-content>
+
